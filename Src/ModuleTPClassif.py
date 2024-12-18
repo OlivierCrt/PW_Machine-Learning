@@ -269,7 +269,7 @@ def CalculerMatricesCovarianceInverseClasses(Individus, NoClasses, CentresGravit
 
 	return ListeMatricesCovarianceInverse
 	
-def PresenterClasses(Individus, Nopy	aClasses, Titre, CentresGravite=[], NomParametres=[], MaxGraphes=10, ParamX=0, ParamY=0):
+def PresenterClasses(Individus, NoClasses, Titre, CentresGravite=[], NomParametres=[], MaxGraphes=10, ParamX=0, ParamY=0):
 #---------------------------------------------------------------------------
 #
 #     Présentation des individus et le centre de gravité des classes
