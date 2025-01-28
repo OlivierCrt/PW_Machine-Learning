@@ -9,12 +9,10 @@ from scipy.stats import multivariate_normal
 from sklearn.ensemble import RandomForestClassifier
 import numpy as np
 
-# Division des données
 X_apprentissage, X_test, y_apprentissage, y_test = train_test_split(
     mfcc_centres_red, labels, test_size=0.1, random_state=42
 )
 
-# Maximum à posteriori
 def maximum_a_posteriori(X_train, y_train, X_test):
     classes = np.unique(y_train)
     probs = []
@@ -34,7 +32,6 @@ y_predict_map = maximum_a_posteriori(X_apprentissage, y_apprentissage, X_test)
 precision_map = accuracy_score(y_test, y_predict_map)
 print(f"\nTaux de reussite sur le Maximum à Posteriori : {precision_map:.2f}")
 
-# Matrice de confusion pour MAP
 cm_map = confusion_matrix(y_test, y_predict_map)
 ConfusionMatrixDisplay(confusion_matrix=cm_map).plot()
 plt.title("Matrice de Confusion - Maximum à Posteriori")
@@ -44,8 +41,8 @@ plt.show()
 Classif = KMeans(n_clusters=len(np.unique(y_apprentissage)), random_state=42)
 Classif.fit(X_apprentissage)
 y_predict = Classif.predict(X_test)
-precision_kmeans1 = accuracy_score(y_test, y_predict)              #0.08 de taux de reussite
-precision_kmeans2 = adjusted_rand_score(y_test, y_predict)           #0.78 de taux de reussite
+precision_kmeans1 = accuracy_score(y_test, y_predict)              
+precision_kmeans2 = adjusted_rand_score(y_test, y_predict)           
 print(f"\nTaux de reussite sur le KMeans avec accuracy_score: {precision_kmeans1:.2f}")
 print(f"Taux de reussite sur le KMeans avec adjusted_rand_score: {precision_kmeans2:.2f}")
 
@@ -74,7 +71,7 @@ Classif = SVC(kernel='linear', random_state=42)
 Classif.fit(X_apprentissage, y_apprentissage)
 y_predict = Classif.predict(X_test)
 precision_svm = accuracy_score(y_test, y_predict)
-print(f"Taux de reussite sur le SVM : {precision_svm:.2f}")
+print(f"Taux de reussite SVM : {precision_svm:.2f}")
 
 # Matrice de confusion pour SVM
 cm_svm = confusion_matrix(y_test, y_predict)

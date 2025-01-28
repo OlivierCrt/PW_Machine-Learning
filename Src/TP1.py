@@ -187,7 +187,7 @@ fichiers_audio = [f for f in os.listdir(chemin_fichiers) if f.endswith(".wav")]
 
 if fichiers_audio:
     print("Analyse temporelle et fréquentielle du premier fichier...")
-    analyser_signal_temporel_frequentiel(os.path.join(chemin_fichiers, fichiers_audio[0]))
+    analyser_signal_temporel_frequentiel(os.path.join(chemin_fichiers, fichiers_audio[2]))
 
     print("Calcul des MFCC et application de l'AFD...")
     mfcc_matrice, labels, prefixes = calculer_mfcc_pour_afd_librosa(chemin_fichiers)
